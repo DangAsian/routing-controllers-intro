@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :set_kitten_url, only: [:kitten, :kittens]
   def welcome
     # render :contest
     @header = "This is the welcome page for my site, please abide to my rules"
@@ -13,7 +14,15 @@ class PagesController < ApplicationController
   end
 
   def kitten
+
+  end
+
+  def kittens
+
+  end
+
+  def set_kitten_url
     requested_size = params[:size]
-    @kitten_url = "http://placekitten.com/#{requested_size}/#{requested_size}"
+  @kitten_url = "http://placekitten.com/#{requested_size}/#{requested_size}"
   end
 end
