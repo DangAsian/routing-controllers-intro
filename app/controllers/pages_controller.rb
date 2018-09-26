@@ -7,10 +7,12 @@ class PagesController < ApplicationController
 
   def about
     @header = "This is the about section, but what about it stands out?"
+
   end
 
   def contest
-    @header = "Contest to rule them all... sounds familiar"
+    flash[:notice] = "Sorry, the contest has ended"
+    redirect_to "/welcome?"
   end
 
   def kitten
