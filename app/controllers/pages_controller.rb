@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
   def contest
     flash[:notice] = "Sorry, the contest has ended"
-    redirect_to "/welcome?"
+    redirect_to welcome_path
   end
 
   def kitten
@@ -27,4 +27,12 @@ class PagesController < ApplicationController
     requested_size = params[:size]
   @kitten_url = "http://placekitten.com/#{requested_size}/#{requested_size}"
   end
+
+  def secrets
+    if params[:magic_word] != "love"
+      redirect_to welcome_path
+      flash[:alert] = "Sorry, you're not authorized to see that page!"
+    end
+  end
+
 end
